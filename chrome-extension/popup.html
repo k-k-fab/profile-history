@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAB戦績一覧</title>
+  <style>
+    body {
+      width: 500px;
+      min-height: 300px;
+      margin: 0;
+      padding: 16px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5;
+    }
+    
+    h1 {
+      margin: 0 0 16px 0;
+      font-size: 18px;
+      color: #333;
+      text-align: center;
+    }
+    
+    .button-container {
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    
+    button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    .records-container {
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    
+    .record-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .record-item:last-child {
+      border-bottom: none;
+    }
+    
+    .record-date {
+      font-weight: 600;
+      color: #667eea;
+      margin-right: 8px;
+    }
+    
+    .record-event {
+      color: #333;
+    }
+    
+    .record-store {
+      color: #10b981;
+      margin-left: 8px;
+      font-weight: 500;
+    }
+    
+    .record-score {
+      color: #666;
+      margin-left: 8px;
+    }
+    
+    .empty-message {
+      text-align: center;
+      color: #999;
+      padding: 40px 20px;
+      font-style: italic;
+    }
+    
+    .error-message {
+      background: #fee;
+      color: #c33;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px 20px;
+      color: #666;
+    }
+    
+    .copy-button {
+      margin-top: 16px;
+      background: #10b981;
+      width: 100%;
+    }
+    
+    .copy-button:hover {
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <h1>🎮 FAB戦績一覧</h1>
+  
+  <div class="button-container">
+    <button id="extractBtn">戦績を抽出</button>
+  </div>
+  
+  <div id="message"></div>
+  
+  <div id="recordsContainer" class="records-container" style="display: none;">
+    <div id="recordsList"></div>
+    <button id="copyBtn" class="copy-button" style="display: none;">結果をコピー</button>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
+
